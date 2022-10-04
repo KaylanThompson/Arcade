@@ -1,4 +1,10 @@
-h1 {
-    color: blue;
+html {
+    background-color: mediumaquamarine;
+}
+
+#board {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     
 }
