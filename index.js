@@ -5,12 +5,7 @@ table.setAttribute("id", "board")
 const cell = document.getElementsByTagName("td")[0]
 
 
-const player1 = "x".toUpperCase()
-const player2 = "o".toUpperCase()
-const player1Name = document.getElementsByTagName("input")[0]
-player1.setAttribute("id", "player1Name")
-const sayMyName1 = getElementById("player1Name").value
-console.log(sayMyName1)
+
 
 section.appendChild(table)
 
@@ -58,6 +53,27 @@ const c8 = document.getElementsByTagName("td")[7]
 c8.setAttribute("id", "c8")
 const c9 = document.getElementsByTagName("td")[8]
 c9.setAttribute("id", "c9")
+
+
+// PLAYER SECTION
+
+
+// FUNCTIONS FOR HOW TO PLACE X OR O ON BOARD
+
+function placeX () {
+  table.addEventListener("click", function(clickEvent){
+    clickEvent.target.innerText = "X"})
+}
+
+
+function placeO () {
+    table.addEventListener("click", function(clickEvent){
+      clickEvent.target.innerText = "O"})
+  }
+
+// PLAYER TURN
+
+
 
 
 
