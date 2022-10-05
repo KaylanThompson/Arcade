@@ -55,7 +55,9 @@ table {
     border-bottom: 3px solid black;
 
 }
-
+#c9, #c8, #c7 {
+    border-bottom: none;
+}
 
 
 
