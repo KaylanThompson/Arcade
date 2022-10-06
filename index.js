@@ -5,6 +5,56 @@ const cell = document.getElementsByTagName("td")[0];
 
 section.appendChild(table);
 
+const X = "Player 1"
+const O = "Player 2"
+
+// FUNCTION TO SELECT WHO GOES FIRST AT RANDOM
+
+function whoGoesFirst (){
+    let firstPlayer
+Math.ceil(1);
+Math.floor(3);
+let whoseTurn = Math.floor(Math.random() * (3-1) + 1);
+if (whoseTurn === 1) {
+    firstPlayer = X
+} else {
+    firstPlayer = O
+}
+console.log(whoseTurn)
+console.log(firstPlayer)
+
+}
+whoGoesFirst()
+
+
+
+// FUNCTION TO DISPLAY PLAYER(S) NAME(S)
+
+function playerName() {
+  const player1Input = document.getElementById("player1");
+  const player1Name = document.getElementById("playerButton");
+  player1Name.addEventListener("click", function (event) {
+    event.preventDefault();
+    let player1 = player1Input.value;
+    document.getElementById("player1Name").innerText = player1;
+    if (document.getElementById("player1Name").innerText === ''){
+        player1 = "Computer"
+        document.getElementById("player1Name").innerText = player1}
+  });
+
+  const player2Input = document.getElementById("player2");
+  const player2Name = document.getElementById("playerButton");
+  player2Name.addEventListener("click", function(event){
+    event.preventDefault();
+    let player2 = player2Input.value;
+    document.getElementById("player2Name").innerText = player2;
+    if (document.getElementById("player2Name").innerText === ''){
+        player2 = "Computer"
+        document.getElementById("player2Name").innerText = player2}
+  })
+}
+playerName();
+
 // FUNCTION TO PICK BOARD SIZE
 
 function boardSize(numberOfCells) {
@@ -69,19 +119,3 @@ function placeO() {
   });
 }
 placeO();
-
-// PLAYERS
-
-function playerName() {
-  const player1Input = document.getElementById("player1");
-  console.log(player1Input);
-  const player1Name = document.getElementById("player1Button");
-  player1Name.addEventListener("click", function (e) {
-    e.preventDefault();
-    let player1 = player1Input.value;
-    document.getElementById("Player1Name").innerText = player1;
-
-    console.log(player1);
-  });
-}
-playerName();

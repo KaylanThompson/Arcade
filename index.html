@@ -9,20 +9,22 @@
   <title>Arcade</title>
 </head>
 <header>
-<div>Player 1: <h2 id="Player1Name"></h2></div>
+
 </header>
 <body>
-  <!-- <button type="button" id="playerButton">Players</button> -->
-  <!-- <button type="button" id="twoPlayerButton">Two Players</button> -->
   <form id="nameInput">
     <label>Player 1
       <input id="player1" type="text" placeholder="Name"></input>
     </label>
-    <button id="player1Button">OK</button>
+    <label>Player 2
+      <input id="player2" type="text" placeholder="Name"></input>
+    </label>
+    <button id="playerButton">OK</button>
 
-    <input id="player2" type="text" placeholder="Name">Player 2</input>
+
   </form>
-
+  <div><h2>Player 1 - X:</h2> <h2 id="player1Name"></h2></div>
+  <div><h2>Player 2 - O:</h2> <h2 id="player2Name"></h2></div>
   <section id="playArea">
 
   </section>
