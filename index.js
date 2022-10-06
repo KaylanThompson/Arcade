@@ -20,11 +20,8 @@ if (whoseTurn === 1) {
 } else {
     firstPlayer = O
 }
-console.log(whoseTurn)
-console.log(firstPlayer)
-
+document.getElementById("firstPlayer").innerText = firstPlayer
 }
-whoGoesFirst()
 
 
 
