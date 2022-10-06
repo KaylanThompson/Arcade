@@ -55,26 +55,38 @@ const c9 = document.getElementsByTagName("td")[8]
 c9.setAttribute("id", "c9")
 
 
-// PLAYER SECTION
-
 
 // FUNCTIONS FOR HOW TO PLACE X OR O ON BOARD
 
 function placeX () {
   table.addEventListener("click", function(clickEvent){
-    clickEvent.target.innerText = "X"})
+    if (clickEvent.target.innerText === ""){
+    clickEvent.target.innerText = "X"}})
 }
 
+placeX()
 
 function placeO () {
     table.addEventListener("click", function(clickEvent){
       clickEvent.target.innerText = "O"})
   }
-
-// PLAYER TURN
-
+placeO()
 
 
+// PLAYERS
+
+
+
+
+function playerName () {
+    const player1Name = document.getElementById("player1")
+    player1Name.addEventListener("input", function(){
+        let player1 = player1Name.innerText
+        // let player2 = 
+        console.log(player1);
+    })
+}
+playerName()
 
 
 
