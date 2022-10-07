@@ -2,68 +2,63 @@ const section = document.getElementsByTagName("section")[0];
 const table = document.createElement("table");
 table.setAttribute("id", "board");
 const cell = document.getElementsByTagName("td")[0];
-
 section.appendChild(table);
 
 // FUNCTION TO PICK BOARD SIZE
 
 function boardSize(numberOfCells) {
-    const row = document.createElement("tr");
-    row.classList.add("row");
-    for (let i = 0; i < numberOfCells; i++) {
-      const cell = document.createElement("td");
-      cell.classList.add("cell");
-      row.appendChild(cell);
-    }
-    table.appendChild(row);
+  const row = document.createElement("tr");
+  row.classList.add("row");
+  for (let i = 0; i < numberOfCells; i++) {
+    const cell = document.createElement("td");
+    cell.classList.add("cell");
+    row.appendChild(cell);
   }
-  
-  boardSize(3);
-  boardSize(3);
-  boardSize(3);
+  table.appendChild(row);
+}
 
+boardSize(3);
+boardSize(3);
+boardSize(3);
 
-const player1 = "Player 1"
-const player2 = "Player 2"
+const player1 = "Player 1";
+const player2 = "Player 2";
+let currentPlayer;
+let firstPlayer;
 
 // FUNCTION TO SELECT WHO GOES FIRST AT RANDOM
 
-
-function whoGoesFirst (){
-let firstPlayer
-Math.ceil(1);
-Math.floor(3);
-let whoseTurn = Math.floor(Math.random() * (3-1) + 1);
-if (whoseTurn === 1) {
-    firstPlayer = player1
-} else {
-    firstPlayer = player2
+function letsPlay() {
+  Math.ceil(1);
+  Math.floor(3);
+  let whoseTurn = Math.floor(Math.random() * (3 - 1) + 1);
+  if (whoseTurn === 1) {
+    firstPlayer = player1;
+    currentPlayer = "X";
+  } else {
+    firstPlayer = player2;
+    currentPlayer = "O";
+  }
+  document.getElementById("firstPlayer").innerText = firstPlayer;
+  // BELOW IS THE TURN PART OF THE SAME FUNCTION
 }
-document.getElementById("firstPlayer").innerText = firstPlayer;
+table.addEventListener("click", function (clickEvent) {
+  if (clickEvent.target.innerText === "") {
+    clickEvent.target.innerText = currentPlayer;
+    switchTurns();
+  }
+});
 
-// SETS FIRST MOVE AS THE PLAYER WHO WAS RANDOMLY PICKED
-let playerTurn
 
+function switchTurns() {
 
-    table.addEventListener("click", function (clickEvent) {
-        if (firstPlayer === player1) {
-            playerTurn = "X"};
-        if (firstPlayer === player2) {
-            playerTurn = "O"
-        };
-        if (clickEvent.target.innerText === "") {
-           clickEvent.target.innerText = playerTurn};
+  if (currentPlayer === "O") {
+    currentPlayer = "X";
+  } else  {
+    currentPlayer = "O";
+  }
 
-        //    if (playerTurn === "X") {
-        //     playerTurn = "O";
-        //   } else {
-        //     playerTurn = "X";
-        //   }
-
-    
-
-        })}
-
+}
 // FUNCTION TO DISPLAY PLAYER(S) NAME(S)
 
 function playerName() {
@@ -73,25 +68,25 @@ function playerName() {
     event.preventDefault();
     let player1 = player1Input.value;
     document.getElementById("player1Name").innerText = player1;
-    if (document.getElementById("player1Name").innerText === ''){
-        player1 = "Computer"
-        document.getElementById("player1Name").innerText = player1}
+    if (document.getElementById("player1Name").innerText === "") {
+      player1 = "Computer";
+      document.getElementById("player1Name").innerText = player1;
+    }
   });
 
   const player2Input = document.getElementById("player2");
   const player2Name = document.getElementById("playerButton");
-  player2Name.addEventListener("click", function(event){
+  player2Name.addEventListener("click", function (event) {
     event.preventDefault();
     let player2 = player2Input.value;
     document.getElementById("player2Name").innerText = player2;
-    if (document.getElementById("player2Name").innerText === ''){
-        player2 = "Computer"
-        document.getElementById("player2Name").innerText = player2}
-  })
+    if (document.getElementById("player2Name").innerText === "") {
+      player2 = "Computer";
+      document.getElementById("player2Name").innerText = player2;
+    }
+  });
 }
 playerName();
-
-
 
 // VARIABLES FOR ROW AND CELL IDS
 
@@ -121,12 +116,12 @@ const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
 let winningCombos = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-]
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
