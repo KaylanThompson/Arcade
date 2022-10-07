@@ -40,7 +40,7 @@ if (whoseTurn === 1) {
     firstPlayer = player2
 }
 document.getElementById("firstPlayer").innerText = firstPlayer;
-console.log(firstPlayer);
+
 // SETS FIRST MOVE AS THE PLAYER WHO WAS RANDOMLY PICKED
 let playerTurn
 
@@ -54,11 +54,13 @@ let playerTurn
         if (clickEvent.target.innerText === "") {
            clickEvent.target.innerText = playerTurn};
 
-           if (playerTurn === "X") {
-            playerTurn = "O";
-          } else {
-            playerTurn = "X";
-          }
+        //    if (playerTurn === "X") {
+        //     playerTurn = "O";
+        //   } else {
+        //     playerTurn = "X";
+        //   }
+
+    
 
         })}
 
@@ -118,3 +120,13 @@ c8.setAttribute("id", "c8");
 const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
+let winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
