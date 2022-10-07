@@ -5,25 +5,62 @@ const cell = document.getElementsByTagName("td")[0];
 
 section.appendChild(table);
 
-const X = "Player 1"
-const O = "Player 2"
+// FUNCTION TO PICK BOARD SIZE
+
+function boardSize(numberOfCells) {
+    const row = document.createElement("tr");
+    row.classList.add("row");
+    for (let i = 0; i < numberOfCells; i++) {
+      const cell = document.createElement("td");
+      cell.classList.add("cell");
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+  
+  boardSize(3);
+  boardSize(3);
+  boardSize(3);
+
+
+const player1 = "Player 1"
+const player2 = "Player 2"
 
 // FUNCTION TO SELECT WHO GOES FIRST AT RANDOM
 
+
 function whoGoesFirst (){
-    let firstPlayer
+let firstPlayer
 Math.ceil(1);
 Math.floor(3);
 let whoseTurn = Math.floor(Math.random() * (3-1) + 1);
 if (whoseTurn === 1) {
-    firstPlayer = X
+    firstPlayer = player1
 } else {
-    firstPlayer = O
+    firstPlayer = player2
 }
-document.getElementById("firstPlayer").innerText = firstPlayer
-}
+document.getElementById("firstPlayer").innerText = firstPlayer;
+console.log(firstPlayer);
+// SETS FIRST MOVE AS THE PLAYER WHO WAS RANDOMLY PICKED
+let playerTurn
 
 
+    table.addEventListener("click", function (clickEvent) {
+        if (firstPlayer === player1) {
+            playerTurn = "X"};
+        if (firstPlayer === player2) {
+            playerTurn = "O"
+        };
+        if (clickEvent.target.innerText === "") {
+           clickEvent.target.innerText = playerTurn};
+
+           if (playerTurn === "X") {
+            playerTurn = "O";
+          } else {
+            playerTurn = "X";
+          }
+
+        })}
 
 // FUNCTION TO DISPLAY PLAYER(S) NAME(S)
 
@@ -52,22 +89,7 @@ function playerName() {
 }
 playerName();
 
-// FUNCTION TO PICK BOARD SIZE
 
-function boardSize(numberOfCells) {
-  const row = document.createElement("tr");
-  row.classList.add("row");
-  for (let i = 0; i < numberOfCells; i++) {
-    const cell = document.createElement("td");
-    cell.classList.add("cell");
-    row.appendChild(cell);
-  }
-  table.appendChild(row);
-}
-
-boardSize(3);
-boardSize(3);
-boardSize(3);
 
 // VARIABLES FOR ROW AND CELL IDS
 
@@ -96,23 +118,3 @@ c8.setAttribute("id", "c8");
 const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
-// FUNCTIONS FOR HOW TO PLACE X OR O ON BOARD
-
-function placeX() {
-  table.addEventListener("click", function (clickEvent) {
-    if (clickEvent.target.innerText === "") {
-      clickEvent.target.innerText = "X";
-    }
-  });
-}
-
-placeX();
-
-function placeO() {
-  table.addEventListener("click", function (clickEvent) {
-    if (clickEvent.target.innerText === "") {
-      clickEvent.target.innerText = "O";
-    }
-  });
-}
-placeO();

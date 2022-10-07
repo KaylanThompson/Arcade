@@ -62,4 +62,7 @@ td {
     text-align: center;
 }
 
-
+#whoseTurn {
+    display: flex;
+    justify-content: center;
+}
