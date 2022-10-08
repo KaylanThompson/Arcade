@@ -1,8 +1,13 @@
+
 const section = document.getElementsByTagName("section")[0];
 const table = document.createElement("table");
 table.setAttribute("id", "board");
-const cell = document.getElementsByTagName("td")[0];
+const cell = document.getElementsByTagName("td");
 section.appendChild(table);
+
+
+
+
 
 // FUNCTION TO PICK BOARD SIZE
 
@@ -25,8 +30,31 @@ const player1 = "Player 1";
 const player2 = "Player 2";
 let currentPlayer;
 let firstPlayer;
+let playerOne
+let playerTwo
 
 // FUNCTION TO SELECT WHO GOES FIRST AT RANDOM
+const winArray = []
+
+function winnerWinnerChickenDinner (){
+  for (let i = 0; i < winArray.length; i++) {
+    if( winArray[i][0].innerText === "X" && winArray[i][1].innerText === "X" && winArray[i][2].innerText === "X"){
+
+    }
+
+  }
+}
+
+// FUNCTION FOR COMPUTER TURN
+
+function computerTurn (){
+  let randomCellIndex = Math.floor(Math.random() * (9 - 1) + 1);
+  console.log(randomCellIndex)
+  cell[randomCellIndex].innerText = "O"
+}
+ 
+
+
 
 function letsPlay() {
   Math.ceil(1);
@@ -36,19 +64,41 @@ function letsPlay() {
     firstPlayer = player1;
     currentPlayer = "X";
   } else {
-    firstPlayer = player2;
+    firstPlayer = player2 || playerTwo === "Computer"
     currentPlayer = "O";
   }
   document.getElementById("firstPlayer").innerText = firstPlayer;
-  // BELOW IS THE TURN PART OF THE SAME FUNCTION
-}
-table.addEventListener("click", function (clickEvent) {
-  if (clickEvent.target.innerText === "") {
-    clickEvent.target.innerText = currentPlayer;
-    switchTurns();
-  }
-});
+  
+  table.addEventListener("click", function (clickEvent) {
+    if (clickEvent.target.innerText === "") {
+      if( playerTwo = "Computer"){
+        computerTurn()
+      }
+      clickEvent.target.innerText = currentPlayer;
 
+    whoWins()
+    winnerWinnerChickenDinner()
+      switchTurns();
+    }
+  });
+}
+
+// 
+function whoWins(){
+  const board = Array.from(document.getElementsByTagName("td"))
+  let boardArray = []
+  for (let i = 0; i<board.length; i++) {
+    boardArray.push(board[i])
+  }
+winArray.push(boardArray.splice(0, 3))
+winArray.push(boardArray.splice(0, 3))
+winArray.push(boardArray.splice(0))
+
+}
+
+
+
+// FUNCTION TO SWITCH PLAYER TURNS
 
 function switchTurns() {
 
@@ -66,27 +116,29 @@ function playerName() {
   const player1Name = document.getElementById("playerButton");
   player1Name.addEventListener("click", function (event) {
     event.preventDefault();
-    let player1 = player1Input.value;
-    document.getElementById("player1Name").innerText = player1;
-    if (document.getElementById("player1Name").innerText === "") {
-      player1 = "Computer";
-      document.getElementById("player1Name").innerText = player1;
-    }
+    playerOne = player1Input.value;
+    document.getElementById("player1Name").innerText = playerOne;
   });
 
   const player2Input = document.getElementById("player2");
   const player2Name = document.getElementById("playerButton");
   player2Name.addEventListener("click", function (event) {
     event.preventDefault();
-    let player2 = player2Input.value;
-    document.getElementById("player2Name").innerText = player2;
+    playerTwo = player2Input.value;
+    document.getElementById("player2Name").innerText = playerTwo;
     if (document.getElementById("player2Name").innerText === "") {
-      player2 = "Computer";
-      document.getElementById("player2Name").innerText = player2;
+      playerTwo = "Computer";
+      document.getElementById("player2Name").innerText = playerTwo;
     }
   });
 }
 playerName();
+
+// FUNCTION FOR COMPUTER PLAYER?
+
+
+
+
 
 // VARIABLES FOR ROW AND CELL IDS
 
@@ -115,13 +167,7 @@ c8.setAttribute("id", "c8");
 const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
-let winningCombos = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+
+
+
+
