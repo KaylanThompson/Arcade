@@ -15,7 +15,11 @@ header {
     background-color: pink;
 
 }
+ h2 { 
+    display: flex;
 
+    justify-content: center;
+ }
 table {
 
     display: table;
