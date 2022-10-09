@@ -5,8 +5,6 @@ table.setAttribute("id", "board");
 const cell = document.getElementsByTagName("td");
 section.appendChild(table);
 
-
-
 // FUNCTION TO PICK BOARD SIZE
 
 function boardSize(numberOfCells) {
@@ -25,7 +23,7 @@ boardSize(3);
 boardSize(3);
 
 const player1 = "Player 1";
-let player2 = "Player 2";
+const player2 = "Player 2";
 const computer = "Computer"
 let playerOne;
 let playerTwo;
@@ -65,8 +63,6 @@ playerName();
 function computerTurn (){
   let randomCellIndex = Math.floor(Math.random() * (9 - 1) + 1);
     console.log(randomCellIndex);
-
-
   }
 // FUNCTION TO SELECT WHO GOES FIRST AT RANDOM AND STARTS GAME
 
@@ -78,11 +74,7 @@ function randomPlayer() {
   if (whoseTurn === 1) {
     firstPlayer = player1;
     currentPlayer = "X";
-  } else if (playerTwo === "Computer"){
-    firstPlayer = computer;
-    player2 = computer
-    currentPlayer = "O"}
-    else{
+  } else{
       firstPlayer = player2;
       currentPlayer = "O"
     }
@@ -93,13 +85,20 @@ function randomPlayer() {
 // FUNCTION FOR GAME PLAY
 
 function letsPlay (){
+
   table.addEventListener("click", function (clickEvent) {
     if (clickEvent.target.innerText === "") {
-      clickEvent.target.innerText = currentPlayer }
-      winnerWinnerChickenDinner()
-      switchTurns()})
+      clickEvent.target.innerText = currentPlayer 
+}
+    newWin()
+      switchTurns()
+
+
+    })
     }
-  
+
+
+
 //  if (firstPlayer === computer){
 //   console.log("first hello")
 //   let randomCellIndex = Math.floor(Math.random() * (9 - 1) + 1);
@@ -166,62 +165,148 @@ c8.setAttribute("id", "c8");
 const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
-// POSSIBLE FUNCTION FOR WINNING ARRAY COMBOS
 
-const winArray = [
-  [c1, c2, c3],
-  [c4, c5, c6],
-  [c7, c8, c9],
-  [c1, c4, c7],
-  [c2, c5, c8],
-  [c3, c6, c9],
-  [c1, c5, c9],
-  [c3, c5, c7]
-]
 
-function winnerWinnerChickenDinner() {
- let winnerX = document.getElementById("winner")
-  for (let i = 0; i < winArray.length; i++) {
-    if (
-      winArray[i][0].innerText === "X" &&
-      winArray[i][1].innerText === "X" &&
-      winArray[i][2].innerText === "X")
-      {winnerX.innerText = "Player 1 Wins!"}
+
+
+
+
+
+  const winArray = [
+    [c1, c2, c3],
+    [c4, c5, c6],
+    [c7, c8, c9],
+    [c1, c4, c7],
+    [c2, c5, c8],
+    [c3, c6, c9],
+    [c1, c5, c9],
+    [c3, c5, c7]
+  ]
+
+function newWin(){
+  let winnerX = document.getElementById("winner")
+
+  if (
+    c1.innerText === "X" && c2.innerText === "X" && c3.innerText === "X" ||
+    c4.innerText === "X" && c5.innerText === "X" && c6.innerText === "X" ||
+    c7.innerText === "X" && c8.innerText === "X" && c9.innerText === "X" ||
+    c1.innerText === "X" && c4.innerText === "X" && c7.innerText === "X" ||
+    c2.innerText === "X" && c5.innerText === "X" && c8.innerText === "X" ||
+    c3.innerText === "X" && c6.innerText === "X" && c9.innerText === "X" ||
+    c1.innerText === "X" && c5.innerText === "X" && c9.innerText === "X" ||
+    c3.innerText === "X" && c5.innerText === "X" && c7.innerText === "X"
+    ) {
+      winnerX.innerText = "Player 1 Wins!"
+    }
 
     else if (
-     winArray[i][0].innerText === "O" &&
-     winArray[i][1].innerText === "O" &&
-     winArray[i][2].innerText === "O")
-     { winnerX.innerText = "Player 2 Wins!"} 
+      c1.innerText === "O" && c2.innerText === "O" && c3.innerText === "O" ||
+      c4.innerText === "O" && c5.innerText === "O" && c6.innerText === "O" ||
+      c7.innerText === "O" && c8.innerText === "O" && c9.innerText === "O" ||
+      c1.innerText === "O" && c4.innerText === "O" && c7.innerText === "O" ||
+      c2.innerText === "O" && c5.innerText === "O" && c8.innerText === "O" ||
+      c3.innerText === "O" && c6.innerText === "O" && c9.innerText === "O" ||
+      c1.innerText === "O" && c5.innerText === "O" && c9.innerText === "O" ||
+      c3.innerText === "O" && c5.innerText === "O" && c7.innerText === "O"
+      ) {
+        winnerX.innerText = "Player 2 Wins!"
+      }
 
-      // if (
-      //   winArray[i][0].innerText !== '' &&
-      //   winArray[i][1].innerText !== '' &&
-      //   winArray[i][2].innerText !== '')
-      //   {winnerX.innerText = "It's a Draw!"}
- }
+     else if ( 
+        c1.innerText !== "" && c2.innerText !== "" && c3.innerText!== "" && c4.innerText !== "" && c5.innerText !== "" && c6.innerText !== "" && c7.innerText !== ""&& c8.innerText !== "" && c9.innerText !== "") {
+          winnerX.innerText = "It's a Draw!"}
 
-  }
+}
 
-// FUNCTION THAT CREATED MY ARRAY FOR WINNING ARRAY
-// function whoWins() {
-//   const board = Array.from(document.getElementsByTagName("td"));
-//   let boardArray = [];
-//   for (let i = 0; i < board.length; i++) {
-//     boardArray.push(board[i]);
+
+
+
+
+
+
+
+// CODE CEMETERY
+
+// function thirdDrawFunction (element) {
+//   for ( let i = 0; i < squares.length; i++)
+
+//   {
+//     element.innerText !== ""
 //   }
-//   winArray.push(boardArray.splice(0, 3));
-//   winArray.push(boardArray.splice(0, 3));
-//   winArray.push(boardArray.splice(0));
-//   winArray.push([c1, c4, c7])
-//   winArray.push([c2, c5, c8])
-//   winArray.push([c3, c6, c9])
-//   winArray.push([c1, c5, c9])
-//   winArray.push([c3, c5, c7])
+  // if (squares[i].innerText === "X" || squares[i].innerText === "O" && squares[i].innerText !== ""){
+  //   console.log("its a draw")
+  // }
+
+
+//  let squares = [c1, c2, c3, c4, c5, c6,c7, c8, c9]
+
+
+//  if (        squares.every((value) => {
+//   return value.innerText === "X" || value.innerText === "O" && winnerX.innerText === "Player 2 Wins!" || winnerX.innerText === "Player 1 Wins!"; 
+//   })){
+//     console.log("it's a draw")
+//   }
 // }
-// whoWins()
+    // for (let i = 0; i < winArray.length; i++) {
+    //   if (
+    //     winArray[i][0].innerText === "X" &&
+    //     winArray[i][1].innerText === "X" &&
+    //     winArray[i][2].innerText === "X")
+    //     {winnerX.innerText = "Player 1 Wins!"}
 
+        // if ( 
+        //   c1.innerText !== "" && c2.innerText !== "" && c3.innerText!== "" && c4.innerText !== "" && c5.innerText !== "" && c6.innerText !== "" && c7.innerText !== ""&& c8.innerText !== "" && c9.innerText !== "") {
+        //     winnerX.innerText = "It's a Draw!"}
+  
+      // if (
+      //  winArray[i][0].innerText === "O" &&
+      //  winArray[i][1].innerText === "O" &&
+      //  winArray[i][2].innerText === "O")
+      //   { winnerX.innerText = "Player 2 Wins!"}
 
+    
+
+ 
+
+      
+    
+
+        // function anotherDrawFunction () {
+        //   let winnerX = document.getElementById("winner")
+
+   
+
+        // }
+  
+
+        // function draw (){
+
+        //   let draw = document.getElementById("winner")
+        //   for (let i = 0; i < squares.length; i++) {
+        //   if (c1 === ""
+  
+        //       winnerX.innerText = "It's a Tie!"
+        //     }
+        // }
+
+// function draw (){
+  // let drawLoop = [
+  //   c1, c2, c3,
+  //   c4, c5, c6,
+  //   c7, c8, c9
+  // ]
+//   let tie = []
+//   for (let i = 0; i < drawLoop.length; i++)
+//   if (drawLoop[i] === '')
+//   tie.push(drawLoop[i])
+//   console.log(tie)
+
+//   if (tie.length === 0){
+//     let winnerX = document.getElementById("winner")
+//     winnerX.innerText = "It's a tie!"
+//   }
+  
+// }
 
 
 
