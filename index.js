@@ -44,16 +44,21 @@ function playerName() {
 
   const player2Input = document.getElementById("player2");
   const player2Name = document.getElementById("playerButton");
+
   player2Name.addEventListener("click", function (event) {
     event.preventDefault();
     playerTwo = player2Input.value;
     document.getElementById("player2Name").innerText = playerTwo;
+    
     if (document.getElementById("player2Name").innerText === "") {
       playerTwo = "Computer";
       document.getElementById("player2Name").innerText = playerTwo;
-    }
-  });
-}
+      singlePlayer()}
+      else {
+        twoPlayer()}
+       } )}
+
+
 playerName();
 
 
@@ -74,55 +79,63 @@ function randomPlayer() {
   if (whoseTurn === 1) {
     firstPlayer = player1;
     currentPlayer = "X";
-  } else{
+  } else if (playerTwo === "Computer"){
+      firstPlayer = player2;
+      currentPlayer = "O"
+    } else {
       firstPlayer = player2;
       currentPlayer = "O"
     }
+
     document.getElementById("firstPlayer").innerText = firstPlayer;
 
 }
 
 // FUNCTION FOR GAME PLAY
 
-function letsPlay (){
+function twoPlayer (){
 
   table.addEventListener("click", function (clickEvent) {
     if (clickEvent.target.innerText === "") {
       clickEvent.target.innerText = currentPlayer 
 }
-    newWin()
+
+      newWin()
       switchTurns()
-
-
     })
+
     }
 
 
 
-//  if (firstPlayer === computer){
-//   console.log("first hello")
-//   let randomCellIndex = Math.floor(Math.random() * (9 - 1) + 1);
-
-//   if(cell[randomCellIndex].innerText === "") {
-//     cell[randomCellIndex].innerText = currentPlayer
-//     switchTurns()}};
-
-//   if (firstPlayer !== computer){
-//   table.addEventListener("click", function (clickEvent) {
-//     if (clickEvent.target.innerText === "") {
-//       clickEvent.target.innerText = currentPlayer }})}
 
 
-//       if (player2 === computer) {
-//         let randomCellIndex = Math.floor(Math.random() * (9 - 1) + 1);
-//         console.log("picked a random number");
 
-//       if(cell[randomCellIndex].innerText === "") {
-//       cell[randomCellIndex].innerText = "O"
-//       console.log("fourth hello")
-//       }}
+    function singlePlayer (){
 
-//       switchTurns()
+      table.addEventListener("click", function (clickEvent) {
+        if (clickEvent.target.innerText === "") {
+          clickEvent.target.innerText = currentPlayer 
+    }
+    
+      computerMove()
+          newWin()
+    
+    
+        })
+     
+        }
+
+function newGame (){
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -130,10 +143,10 @@ function letsPlay (){
 // FUNCTION TO SWITCH PLAYER TURNS
 
 function switchTurns() {
-  if (currentPlayer === "O") {
-    currentPlayer = "X";
-  } else {
+  if (currentPlayer === "X") {
     currentPlayer = "O";
+  } else {
+    currentPlayer = "X";
   }
 }
 
@@ -166,6 +179,22 @@ const c9 = document.getElementsByTagName("td")[8];
 c9.setAttribute("id", "c9");
 
 
+
+let squares = [c1, c2, c3, c4, c5, c6,c7, c8, c9]
+
+function isCellEmpty(value) {
+  return (value.innerText === "")
+}
+
+function computerMove (){
+  const emptyCells = squares.filter(isCellEmpty)
+  // let randomCellIndex = Math.floor(Math.random() * emptyCells.length)
+
+let randomCellIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+// console.log(randomCellIndex)
+console.log(emptyCells)
+randomCellIndex.innerText = "O"
+}
 
 
 
@@ -238,7 +267,7 @@ function newWin(){
   // }
 
 
-//  let squares = [c1, c2, c3, c4, c5, c6,c7, c8, c9]
+
 
 
 //  if (        squares.every((value) => {
